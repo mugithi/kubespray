@@ -3,6 +3,11 @@
 - name: install lsscsi
   apt:
    name: lsscsi
+   state: present
+
+- name: ceph-common
+  apt:
+   name: ceph-common
    state: present 
 
 # Read all Partitions
@@ -22,7 +27,7 @@
    device: /dev/sdb
    part_type: primary
    part_start: "0%" 
-   part_end: "33%"
+   part_end: "32%"
    label: gpt
    number: 1
    state: present
@@ -30,8 +35,8 @@
 - parted:
    device: /dev/sdb
    part_type: primary
-   part_start: "34%"
-   part_end: "67%"
+   part_start: "33%"
+   part_end: "66%"
    label: gpt
    number: 2
    state: present
@@ -39,8 +44,8 @@
 - parted:
    device: /dev/sdb
    part_type: primary
-   part_start: "68%"
-   part_end: "100%"
+   part_start: "67%"
+   part_end: "99%"
    label: gpt
    number: 3
    state: present
