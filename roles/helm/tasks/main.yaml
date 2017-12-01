@@ -1,0 +1,14 @@
+---
+
+# Get helm install script
+- name: Install helm sh
+  get_url:
+    url: https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get 
+    dest: /tmp/get_helm.sh
+    mode: 700
+
+
+# Install helm chart
+- name: Install helm chart 
+  command: /tmp/get_helm.sh
+

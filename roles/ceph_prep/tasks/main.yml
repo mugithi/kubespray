@@ -1,0 +1,152 @@
+---
+# Install lsscsi
+- name: install lsscsi
+  apt:
+   name: lsscsi
+   state: present 
+
+# Read all Partitions
+- parted: device=/dev/sdb unit=MiB
+  register: sdb_info
+
+# Remove all partitions from disk
+- parted:
+   device: /dev/sdb
+   number: "{{ item.num }}"
+   state: absent
+  with_items:
+   - "{{ sdb_info.partitions }}"
+
+# Create a new primary partition
+- parted:
+   device: /dev/sdb
+   part_type: primary
+   part_start: "0%" 
+   part_end: "33%"
+   label: gpt
+   number: 1
+   state: present
+
+- parted:
+   device: /dev/sdb
+   part_type: primary
+   part_start: "34%"
+   part_end: "67%"
+   label: gpt
+   number: 2
+   state: present
+
+- parted:
+   device: /dev/sdb
+   part_type: primary
+   part_start: "68%"
+   part_end: "100%"
+   label: gpt
+   number: 3
+   state: present
+
+
+# Create a ext4 filesystem on
+#- filesystem:
+#   fstype: ext4 
+#   force: yes
+#   dev: /dev/sdb1
+
+#- filesystem:
+#   fstype: ext4
+#   force: yes
+#   dev: /dev/sdb2
+
+#- filesystem:
+#   fstype: ext4
+#   force: yes
+#   dev: /dev/sdb3
+
+
+######---f
+# Read all Partitions
+- parted: device=/dev/sdf unit=MiB
+  register: sdf_info
+
+# Remove all partitions from disk
+- parted:
+   device: /dev/sdf
+   number: "{{ item.num }}"
+   state: absent
+  with_items:
+   - "{{ sdb_info.partitions }}"
+
+# Create a new primary partition
+#- parted:
+#   device: /dev/sdf
+#   label: gpt
+#   part_type: primary
+#   number: 1
+#   state: present
+
+# Create a ext4 filesystem on
+- filesystem:
+   fstype: xfs
+   force: yes
+   dev: /dev/sdf
+
+
+######---g
+# Read all Partitions
+- parted: device=/dev/sdg unit=MiB
+  register: sdg_info
+
+# Remove all partitions from disk
+- parted:
+   device: /dev/sdg
+   number: "{{ item.num }}"
+   state: absent
+  with_items:
+   - "{{ sdg_info.partitions }}"
+
+# Create a new primary partition
+#- parted:
+#   device: /dev/sdg
+#   part_type: primary
+#   label: gpt
+#   number: 1
+#   state: present
+
+# Create a ext4 filesystem on
+- filesystem:
+   fstype: xfs
+   force: yes
+   dev: /dev/sdg
+
+
+
+######---h
+# Read all Partitions
+- parted: device=/dev/sdh unit=MiB
+  register: sdh_info
+
+# Remove all partitions from disk
+- parted:
+   device: /dev/sdh
+   number: "{{ item.num }}"
+   state: absent
+  with_items:
+   - "{{ sdh_info.partitions }}"
+
+# Create a new primary partition
+#- parted:
+#   device: /dev/sdh
+#   part_type: primary
+#   label: gpt
+#   number: 1
+#   state: present
+
+
+# Create a ext4 filesystem on
+- filesystem:
+   fstype: xfs
+   force: yes
+   dev: /dev/sdh
+
+
+

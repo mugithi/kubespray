@@ -1,0 +1,8 @@
+---
+#Add Default Route
+- name: Add delete default
+  command:  route delete default
+
+#Add Default Route
+- name: Add default route
+  command:  route add default gw 10.20.44.1
