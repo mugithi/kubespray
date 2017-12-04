@@ -5,6 +5,7 @@
   git:
     repo: https://github.com/mugithi/openstack-helm.git
     dest: /openstack-helm/
+    force: yes
 
 
 # Make file executable
