@@ -1,0 +1,22 @@
+---
+
+# Get helm install script
+- name: git clone repo
+  git:
+    repo: https://github.com/mugithi/openstack-helm.git
+    dest: /openstack-helm/
+
+
+# Make file executable
+- name: Make file executable
+  file:
+    path: /openstack-helm/openstack.sh
+    owner: ubuntu
+    group: admin
+    mode: 0644
+
+
+# Install Openstack on Kubernetes
+- name: Install helm chart 
+  command: /openstack-helm/openstack.sh
+
