@@ -12,8 +12,8 @@
   file:
     path: /openstack-helm/openstack.sh
     owner: ubuntu
-    group: admin
-    mode: 0644
+    group: ubuntu 
+    mode: 0755
 
 
 # Install Openstack on Kubernetes
