@@ -20,4 +20,4 @@
 # Install Openstack on Kubernetes
 - name: Install helm chart 
   command: /openstack-helm/openstack.sh
-
+  become: true 
