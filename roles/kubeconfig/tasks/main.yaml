@@ -4,13 +4,13 @@
 - name: git clone repo
   git:
     repo: https://github.com/mugithi/openstack-helm.git
-    dest: /openstack-helm/install-helm/
+    dest: /openstack-helm/
     force: yes
 
 # Make file executable
 - name: Make file executable
   file:
-    path: /openstack-helm/install-helm/setup_helm.sh
+    path: /openstack-helm/setup_helm.sh
     owner: ubuntu
     group: ubuntu
     mode: 0755
@@ -18,7 +18,7 @@
 # Make file executable
 - name: Make file executable
   file:
-    path: /openstack-helm/install-helm/make_helm.sh
+    path: /openstack-helm/make_helm.sh
     owner: ubuntu
     group: ubuntu
     mode: 0755
@@ -26,7 +26,7 @@
 # Make file executable
 - name: Make file executable
   file:
-    path: /openstack-helm/install-helm/label_node.sh
+    path: /openstack-helm/label_node.sh
     owner: ubuntu
     group: ubuntu
     mode: 0755
@@ -34,31 +34,31 @@
 # Make file executable
 - name: Make file executable
   file:
-    path: /openstack-helm/install-helm/install_ceph.sh
+    path: /openstack-helm/install_ceph.sh
     owner: ubuntu
     group: ubuntu
     mode: 0755
 
 # Install Openstack on Kubernetes
 - name: Install helm chart
-  command: /openstack-helm/install-helm/setup_helm.sh
+  command: /openstack-helm/setup_helm.sh
   become: true
   ignore_errors: yes
 
 # Install Openstack on Kubernetes
 - name: Install helm chart
-  command: /openstack-helm/install-helm/make_helm.sh
+  command: /openstack-helm/make_helm.sh
   become: true
   ignore_errors: yes
 
 # Install Openstack on Kubernetes
 - name: Install helm chart
-  command: /openstack-helm/install-helm/label_node.sh
+  command: /openstack-helm/label_node.sh
   become: true
   ignore_errors: yes
 
 # Install Openstack on Kubernetes
 - name: Install helm chart
-  command: /openstack-helm/install-helm/install_ceph.sh
+  command: /openstack-helm/install_ceph.sh
   become: true
   ignore_errors: yes

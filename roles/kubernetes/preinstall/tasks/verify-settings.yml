@@ -19,13 +19,14 @@
 - name: swap - disable swap
   command: sudo swapoff -a
   ignore_errors: yes
+  become: yes
 
 - name: swap - remove current swaps from fstab
   lineinfile:
     dest: /etc/fstab
     regexp: '^/[\S]+\s+none\s+swap '
     state: absent
-
+  become: yes
   
 - name: Stop if unknown network plugin
   assert:
