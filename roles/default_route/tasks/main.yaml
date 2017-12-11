@@ -6,3 +6,18 @@
 #Add Default Route
 - name: Add default route
   command:  route add default gw 10.20.44.1
+
+
+# Add Openstack Public Network
+- name: Make file executable
+  file:
+    path: /openstack-helm/setup-gateway.sh
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+
+# Add Openstack Public Network
+- name: Install helm chart
+  command: /openstack-helm/setup-gateway.sh
+  become: true
+  ignore_errors: yes
