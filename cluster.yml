@@ -110,7 +110,7 @@
     - {role: kubespray-defaults}
     - {role: ceph_prep}
     - {role: default_route}
-
+    - {role: openstack_external_network} 
 
 - hosts: kube-master[0]
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
