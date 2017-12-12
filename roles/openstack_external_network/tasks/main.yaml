@@ -1,14 +1,4 @@
 ---
-# Add Openstack Public Network
-- name: Make file executable
-  file:
-    path: /openstack-helm/setup-gateway.sh
-    owner: ubuntu
-    group: ubuntu
-    mode: 0755
+# Create Openstack External Network
+- script: script/setup-gatway.sh
 
-# Add Openstack Public Network
-- name: Install helm chart
-  command: /openstack-helm/setup-gateway.sh
-  become: true
-  ignore_errors: yes

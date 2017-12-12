@@ -110,7 +110,6 @@
     - {role: kubespray-defaults}
     - {role: ceph_prep}
     - {role: default_route}
-    - {role: openstack_external_network} 
 
 - hosts: kube-master[0]
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
@@ -119,3 +118,8 @@
     - { role: kubernetes-apps, tags: apps }
     - { role: helm }
     - { role: kubeconfig } 
+
+- hosts: k8s-cluster
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  roles:
+    - {role: openstack_external_network}
